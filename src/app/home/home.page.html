@@ -1,26 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title> Blank </ion-title>
+<ion-header>
+  <ion-toolbar class="header-toolbar">
+    <ion-title>Welcome to Anghami</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding home-content">
+  <!-- App Logo at the top -->
+  <div class="logo-container">
+    <ion-img src="assets/app_logo.png"></ion-img>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
+  <!-- Introduction Text -->
+  <div class="intro-container">
+    <h2 class="intro-heading">Manage Your Favorite Music</h2>
+    <p class="intro-text">
+      Enjoy a unique experience by managing your recommended music playlist.
+      Add, modify, and listen to your favorite tracks. Log in to access all the
+      features.
     </p>
+  </div>
+
+  <!-- Login and Register Buttons -->
+  <div class="button-container">
+    <ion-button expand="block" routerLink="/login" class="login-button"
+      >Sign In</ion-button
+    >
+    <ion-button expand="block" routerLink="/register" class="register-button"
+      >Register</ion-button
+    >
   </div>
 </ion-content>
