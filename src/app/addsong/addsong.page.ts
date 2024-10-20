@@ -73,17 +73,13 @@ export class AddSongPage implements OnInit {
         artiste: formValue.artiste,
         catégorie: formValue.catégorie || 'Choose a Category',
         réaliser: formValue.réaliser,
+        userId: localStorage.getItem('userId') 
       };
 
       if (this.isEditMode && this.songId) {
-        const updateSong = {
-          titre: formValue.titre,
-          artiste: formValue.artiste,
-          catégorie: formValue.catégorie || 'Choose a Category',
-          réaliser: formValue.réaliser,
-        };
+
         // If editing, update the song
-        this.playlistService.updateSong(this.songId, updateSong).subscribe({
+        this.playlistService.updateSong(this.songId, newSong).subscribe({
           next: (response) => {
             console.log('Song updated:', response);
             this.showToast('Song updated successfully!', 'success'); // Show success toast

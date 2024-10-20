@@ -20,6 +20,7 @@ export class PlaylistPage implements OnInit {
 
   getSongs() {
     this.songs=[];
+    const userId = localStorage.getItem('userId'); // Retrieve userId from local storage
     this.playlistService.getAllSongs().subscribe({
       next: (response: SongResponse) => {
         
@@ -35,7 +36,11 @@ export class PlaylistPage implements OnInit {
             id: key, 
             ...rest, // Spread the remaining properties
           };
-          this.songs.push(song);
+          // Filter songs based on userId
+          if (song.userId === userId) {
+            
+            this.songs.push(song); // Add song to the list if userId matches
+          }
         }
       }
         console.log(this.songs);
@@ -78,7 +83,6 @@ deleteSong(songId: string) {
   this.playlistService.deleteSong(songId).subscribe({
     next: (response) => {
       console.log('after delete' +response);
-     
       this.getSongs();
     },
     error: (err) => {
