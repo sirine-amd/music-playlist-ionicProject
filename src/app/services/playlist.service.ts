@@ -27,7 +27,9 @@ export class PlaylistService {
     );
   }
 
-  deleteSong(userId: string, songId: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}${userId}/songs/${songId}.json`);
+  deleteSong(songid:string){
+    return this.http.delete(
+      `https://playlist-63eea-default-rtdb.firebaseio.com/songs/${songid}.json`
+    );
   }
 }

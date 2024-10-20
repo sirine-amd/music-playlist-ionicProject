@@ -9,18 +9,20 @@ import { PlaylistService } from '../services/playlist.service';
 export class AddSongPage {
   constructor(private playlistService: PlaylistService) {}
 
-  onSubmit(formValue: { titre: string; artiste: string; categorie?: string; realiser: string }) {
+  onSubmit(formValue: { titre: string; artiste: string; catégorie?: string; réaliser: string }) {
     const newSong = {
       titre: formValue.titre,
       artiste: formValue.artiste,
-      categorie: formValue.categorie || 'Choose a Category', // Default value if not provided
-      realiser: new Date(formValue.realiser).toISOString(), // Convert date to ISO format if needed
+      catégorie: formValue.catégorie || 'Choose a Category', // Default value if not provided
+      réaliser: formValue.réaliser, // Convert date to ISO format if needed
       // Include userId if necessary
       // userId: 'someUserId', // Uncomment and set this if needed
     };
 
     this.playlistService.addSong(newSong).subscribe({
       next: (response) => {
+        console.log('Song :', newSong);
+
         console.log('Song added:', response);
         // Handle success, e.g., navigate back or show a success message
       },

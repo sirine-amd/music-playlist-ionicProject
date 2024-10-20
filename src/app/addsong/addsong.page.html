@@ -1,6 +1,13 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Add Song</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title> Add song </ion-title>
+    <ion-buttons slot="start">
+      <ion-icon
+        slot="icon-only"
+        routerLink="/playlist"
+        name="arrow-back-circle-outline"
+      ></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -8,17 +15,17 @@
   <div class="bg-img">
     <div class="ion-margin">
       <form #f="ngForm">
-        <ion-label>Titre</ion-label>
+        <ion-label>Title</ion-label>
         <ion-input ngModel required name="titre" type="text" class="custom-input"></ion-input>
 
-        <ion-label>Artiste</ion-label>
+        <ion-label>Artist</ion-label>
         <ion-input ngModel required name="artiste" type="text" class="custom-input"></ion-input>
 
-        <ion-label>Catégorie</ion-label>
-        <ion-input ngModel name="categorie" type="text" class="custom-input"></ion-input>
+        <ion-label>Category</ion-label>
+        <ion-input ngModel name="catégorie" type="text" class="custom-input"></ion-input>
 
-        <ion-label>Date de réalisation</ion-label>
-        <ion-input ngModel required name="realiser" type="date" class="custom-input"></ion-input>
+        <ion-label>Release date</ion-label>
+        <ion-input ngModel required name="réaliser" type="date" class="custom-input"></ion-input>
 
         <ion-button
           class="custom-button"

@@ -8,6 +8,22 @@
     background-size: cover;
   }
 
-  ion-button{
-    background-color: purple;
+  .custom-button {
+    background-color: rgb(111, 51, 111); /* Change this to your desired color */
+    color: white; /* Change text color if needed */
+    margin-top: 50px;
+  }
+  .custom-input {
+    margin-bottom: 16px; /* Space between inputs */
+    padding: 5px; /* Padding inside the input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+
+  }
+  
+  /* Optionally, add styles for labels */
+  ion-label {
+    margin-bottom: 15px;
+    margin-bottom: 4px; /* Space between label and input */
+    display: block; /* Ensure the label takes the full width */
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../services/playlist.service';
 import { Song } from '../models/song.model';
 import { SongResponse } from '../models/song.response';
+import { AlertController } from '@ionic/angular';
 
 
 
@@ -15,7 +16,7 @@ export class PlaylistPage implements OnInit {
 
   songs: Song[] = [];
 
-  constructor(private playlistService: PlaylistService) { }
+  constructor(private playlistService: PlaylistService, private alertController: AlertController) { }
 
   getSongs() {
     this.playlistService.getAllSongs().subscribe({
@@ -41,6 +42,47 @@ export class PlaylistPage implements OnInit {
       },
     });
   }
+
+  // Method to present an alert for deletion
+async presentAlert(songId: string) {
+  const alert = await this.alertController.create({
+    header: 'Confirm Deletion',
+    message: 'Are you sure you want to delete this song?',
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Cancel clicked');
+        },
+      },
+      {
+        text: 'Delete',
+        handler: () => {
+          this.deleteSong(songId); // Call your delete method here
+        },
+      },
+    ],
+  });
+
+  await alert.present();
+}
+
+// Method to delete the song
+deleteSong(songId: string) {
+  console.log("id"+ songId);
+  this.playlistService.deleteSong(songId).subscribe({
+    next: (response) => {
+      console.log('after delete' +response);
+      this.songs=[]
+      this.getSongs();
+    },
+    error: (err) => {
+      console.error('Error deleting song:', err);
+    },
+  });
+}
 
   ngOnInit() {
     this.getSongs();
