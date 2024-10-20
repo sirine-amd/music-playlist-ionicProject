@@ -47,7 +47,8 @@ export class LoginPage {
       (userData) => {
         if (userData) {
           console.log('Login successful', userData);
-          this.router.navigate(['/playlist']);
+          //this.router.navigate(['/playlist']);
+          this.router.navigate(['/tabs']);
         } else {
           console.error('Login failed: Invalid credentials');
           this.showToast('Login failed: Invalid credentials');
