@@ -47,7 +47,7 @@ export class LoginPage {
       (userData) => {
         if (userData) {
           console.log('Login successful', userData);
-          //this.router.navigate(['/playlist']);
+          localStorage.setItem('userId', userData.id);
           this.router.navigate(['/tabs']);
         } else {
           console.error('Login failed: Invalid credentials');

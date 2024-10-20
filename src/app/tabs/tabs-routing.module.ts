@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'profile', // Default route
+        redirectTo: 'playlist', // Default route
         pathMatch: 'full',
       },
     ],

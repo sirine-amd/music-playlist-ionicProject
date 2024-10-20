@@ -1,8 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Radio</ion-title>
+    <ion-title>User Profile</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <div class="example-content">Radio content</div>
+  <div class="profile-container">
+    <ion-item>
+      <ion-label position="stacked">Full Name</ion-label>
+      <ion-input [(ngModel)]="userProfile.fullName" placeholder="Enter your full name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input [(ngModel)]="userProfile.email" type="email" placeholder="Enter your email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Age</ion-label>
+      <ion-input [(ngModel)]="userProfile.age" type="number" placeholder="Enter your age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Profile Photo</ion-label>
+      <img *ngIf="userProfile.photoUrl" [src]="userProfile.photoUrl" class="profile-photo"/>
+      <input type="file" (change)="onFileChange($event)" accept="image/*"/>
+    </ion-item>
+
+    <ion-button expand="full" (click)="updateProfile()">Update Profile</ion-button>
+  </div>
 </ion-content>
+
