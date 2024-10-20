@@ -35,6 +35,12 @@ const routes: Routes = [
       import('./register/register.module').then((m) => m.RegisterPageModule),
   },
   {
+<<<<<<< HEAD
+    path: 'songdetail/:id',
+    loadChildren: () => import('./songdetail/songdetail.module').then( m => m.SongdetailPageModule)
+  },
+
+=======
     path: 'tabs',
     component: TabsPage,
     children: [
@@ -62,6 +68,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
+>>>>>>> aeba60cf5640e57fdad4d08247e31dbb38f666d1
 ];
 
 @NgModule({

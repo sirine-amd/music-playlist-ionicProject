@@ -1,0 +1,13 @@
+.song-image {
+    width: 100px; /* Or specify a specific width like 300px */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fits within the container */
+    border-radius: 10px; /* Optional: adds rounded corners */
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+    align-items: center;     /* Centers the image vertically (within row) */
+    height: 100%;            /* Ensures the height of the column is used */
+  }
