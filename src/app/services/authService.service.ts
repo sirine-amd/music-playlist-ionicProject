@@ -1,24 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:';
+  private databaseUrl =
+    'https://playlist-63eea-default-rtdb.firebaseio.com/Users';
 
   constructor(private http: HttpClient) {}
 
-  signIn(email: string, password: string, apiKey: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}signInWithPassword?key=${apiKey}`, {
-      email,
-      password,
-      returnSecureToken: true,
-    });
+  authenticate(email: string, fullname: string): Observable<any> {
+    return this.http.get(`${this.databaseUrl}.json`).pipe(
+      map((data: any) => {
+        for (const id in data) {
+          if (data[id].email === email && data[id].fullName === fullname) {
+            return { id, ...data[id] };
+          }
+        }
+        return null;
+      }),
+      catchError((error) => {
+        console.error('Error fetching user data', error);
+        return of(null);
+      })
+    );
   }
 
-  signOut() {
-    // Implement sign-out logic if needed (Firebase token management)
-  }
+  signOut() {}
 }
