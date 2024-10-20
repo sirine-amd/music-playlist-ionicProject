@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { AddsongPageRoutingModule } from './addsong-routing.module';
 
-import { AddsongPage } from './addsong.page';
+import { AddSongPage } from './addsong.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { AddsongPage } from './addsong.page';
     IonicModule,
     AddsongPageRoutingModule
   ],
-  declarations: [AddsongPage]
+  declarations: [AddSongPage]
 })
 export class AddsongPageModule {}

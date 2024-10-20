@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SongResponse } from '../models/song.response';
+import { Song } from '../models/song.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +20,11 @@ export class PlaylistService {
     return this.http.get<SongResponse>('https://playlist-63eea-default-rtdb.firebaseio.com/songs.json');
   }
 
-  addSong(userId: string, song: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}${userId}/songs.json`, song);
+  addSong(song: any){ 
+    return this.http.post(
+      'https://playlist-63eea-default-rtdb.firebaseio.com/songs.json',
+      song
+    );
   }
 
   deleteSong(userId: string, songId: string): Observable<any> {

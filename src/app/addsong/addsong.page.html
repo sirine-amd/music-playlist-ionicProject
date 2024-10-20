@@ -1,13 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>addsong</ion-title>
+    <ion-title>Add Song</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">addsong</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="bg-img">
+    <div class="ion-margin">
+      <form #f="ngForm">
+        <ion-label>Titre</ion-label>
+        <ion-input ngModel required name="titre" type="text" class="custom-input"></ion-input>
+
+        <ion-label>Artiste</ion-label>
+        <ion-input ngModel required name="artiste" type="text" class="custom-input"></ion-input>
+
+        <ion-label>Catégorie</ion-label>
+        <ion-input ngModel name="categorie" type="text" class="custom-input"></ion-input>
+
+        <ion-label>Date de réalisation</ion-label>
+        <ion-input ngModel required name="realiser" type="date" class="custom-input"></ion-input>
+
+        <ion-button
+          class="custom-button"
+          [disabled]="f.invalid"
+          (click)="onSubmit(f.value)"
+          type="submit"
+          expand="full"
+        >Add Song</ion-button>
+
+        <!-- Uncomment this for debugging the form values -->
+        <!-- <pre>{{ f.value | json }}</pre> -->
+      </form>
+    </div>
+  </div>
 </ion-content>
