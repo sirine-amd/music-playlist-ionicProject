@@ -32,4 +32,9 @@ export class PlaylistService {
       `https://playlist-63eea-default-rtdb.firebaseio.com/songs/${songid}.json`
     );
   }
+  getSongById(songid:string): Observable<Song>{
+    return this.http.get<Song>(
+      `https://playlist-63eea-default-rtdb.firebaseio.com/songs/${songid}.json`
+    );
+  }
 }

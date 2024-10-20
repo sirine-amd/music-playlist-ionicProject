@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Song Details</ion-title>
+
+    <!-- Edit button on the left (start) -->
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon
+        slot="icon-only"
+        routerLink="/playlist"
+        name="arrow-back-circle-outline"
+      ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Delete button on the right (end) -->
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlert()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div class="ion-margin" *ngIf="song">
+    <strong>Details of this song:</strong>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" offset="3" class="image-container">
+          <ion-img [src]="defaultImageUrl" class="song-image"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <h3 class="ion-text-center">
+      {{ song.titre }} by {{ song.artiste }}
+    </h3>
+
+    <!-- Category and Release Date side by side -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <strong>Category:</strong>
+        </ion-col>
+        <ion-col size="9">
+          {{ song['catégorie'] }}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3">
+          <strong>Release Date:</strong>
+        </ion-col>
+        <ion-col size="9">
+          {{ song['réaliser'] | date: 'shortDate' }}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-button expand="full" color="secondary" (click)="editSong()" style="margin-top: 50px;">
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Edit Song
+    </ion-button>
+  </div>
+
+  <!-- Optional loading message or spinner while song is undefined -->
+  <div *ngIf="!song">
+    <ion-spinner></ion-spinner>
+    <p>Loading song details...</p>
+  </div>
+</ion-content>

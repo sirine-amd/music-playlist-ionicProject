@@ -15,7 +15,7 @@
   <div class="bg-img">
     <ion-list>
       <ion-item-sliding *ngFor="let song of songs; let i = index">
-        <ion-item>
+        <ion-item [routerLink]="['/songdetail', song.id]">
           <ion-icon name="musical-notes-outline" slot="start"></ion-icon>
           <ion-label>
             <h2>{{ song.titre }}</h2>
