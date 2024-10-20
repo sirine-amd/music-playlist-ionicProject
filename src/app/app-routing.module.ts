@@ -25,6 +25,11 @@ const routes: Routes = [
       import('./playlist/playlist.module').then((m) => m.PlaylistPageModule),
   },
   {
+    path: 'updatesong/:id',
+    loadChildren: () =>
+      import('./addsong/addsong.module').then((m) => m.AddsongPageModule),
+  },
+  {
     path: 'addsong',
     loadChildren: () =>
       import('./addsong/addsong.module').then((m) => m.AddsongPageModule),

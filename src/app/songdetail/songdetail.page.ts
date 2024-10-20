@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlaylistService } from '../services/playlist.service';
 import { Song } from '../models/song.model';
 import { AlertController } from '@ionic/angular';
@@ -17,14 +17,19 @@ export class SongdetailPage implements OnInit {
   constructor(
     private songService: PlaylistService,
     private activatedRoute: ActivatedRoute,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private router: Router
+
   ) {}
 
   ngOnInit() {
-     this.songId = this.activatedRoute.snapshot.paramMap.get('id')
-    if ( this.songId) {
-      this.loadSongDetails( this.songId);
-    }
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.songId = params.get('id'); // Assuming 'id' is the parameter name in the route
+      if (this.songId) {
+        this.loadSongDetails(this.songId); // Load the song details
+      }
+    });
+
   }
 
   loadSongDetails(id: string) {
@@ -50,6 +55,7 @@ export class SongdetailPage implements OnInit {
           text: 'Delete',
           handler: () => {
             this.deleteSong( this.songId); // Call your delete method here
+            this.router.navigateByUrl('/tabs/playlist');
           },
         },
       ],
@@ -74,6 +80,7 @@ export class SongdetailPage implements OnInit {
   
 
   editSong() {
-    console.log("edit")
+    // Navigate to AddSong page with the song ID for editing
+    this.router.navigate(['/updatesong', this.songId]);
   }
 }

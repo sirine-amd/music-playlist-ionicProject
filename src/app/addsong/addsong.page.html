@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title> Add song </ion-title>
+    <ion-title>{{ isEditMode ? 'Edit Song' : 'Add Song' }}</ion-title>
     <ion-buttons slot="start">
       <ion-icon
         slot="icon-only"
-        routerLink="/playlist"
+        routerLink="/tabs/playlist"
         name="arrow-back-circle-outline"
       ></ion-icon>
     </ion-buttons>
@@ -14,29 +14,30 @@
 <ion-content [fullscreen]="true">
   <div class="bg-img">
     <div class="ion-margin">
-      <form #f="ngForm">
+      <form [formGroup]="songForm" (ngSubmit)="onSubmit()">
         <ion-label>Title</ion-label>
-        <ion-input ngModel required name="titre" type="text" class="custom-input"></ion-input>
+        <ion-input formControlName="titre" type="text" class="custom-input"></ion-input>
 
         <ion-label>Artist</ion-label>
-        <ion-input ngModel required name="artiste" type="text" class="custom-input"></ion-input>
+        <ion-input formControlName="artiste" type="text" class="custom-input"></ion-input>
 
         <ion-label>Category</ion-label>
-        <ion-input ngModel name="catégorie" type="text" class="custom-input"></ion-input>
+        <ion-input formControlName="catégorie" type="text" class="custom-input"></ion-input>
 
         <ion-label>Release date</ion-label>
-        <ion-input ngModel required name="réaliser" type="date" class="custom-input"></ion-input>
+        <ion-input formControlName="réaliser" type="date" class="custom-input"></ion-input>
 
         <ion-button
           class="custom-button"
-          [disabled]="f.invalid"
-          (click)="onSubmit(f.value)"
-          type="submit"
+          [disabled]="songForm.invalid"
           expand="full"
-        >Add Song</ion-button>
+          type="submit"
+        >
+          {{ isEditMode ? 'Update Song' : 'Add Song' }}
+        </ion-button>
 
         <!-- Uncomment this for debugging the form values -->
-        <!-- <pre>{{ f.value | json }}</pre> -->
+        <!-- <pre>{{ songForm.value | json }}</pre> -->
       </form>
     </div>
   </div>

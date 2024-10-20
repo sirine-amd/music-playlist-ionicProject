@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -28,6 +29,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     AngularFireModule.initializeApp(environment.firebase), // Initialize Firebase App
     AngularFirestoreModule, // Firestore module
     AngularFireStorageModule, // Firebase Storage module
+    ReactiveFormsModule,
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
