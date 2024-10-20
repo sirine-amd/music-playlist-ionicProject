@@ -37,4 +37,11 @@ export class PlaylistService {
       `https://playlist-63eea-default-rtdb.firebaseio.com/songs/${songid}.json`
     );
   }
+
+  updateSong(songId:string, song:any){
+    return this.http.put(
+      `https://playlist-63eea-default-rtdb.firebaseio.com/songs/${songId}.json`,
+      song
+    );
+  }
 }

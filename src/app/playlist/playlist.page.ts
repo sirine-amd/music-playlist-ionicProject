@@ -19,10 +19,13 @@ export class PlaylistPage implements OnInit {
   constructor(private playlistService: PlaylistService, private alertController: AlertController) { }
 
   getSongs() {
+    this.songs=[];
     this.playlistService.getAllSongs().subscribe({
       next: (response: SongResponse) => {
+        
         console.log(response);
         for (const key in response) {
+          console.log("responde: " + response)
         if (response.hasOwnProperty(key)) {
           // Destructure the response[key] to omit 'id'
           const { id, ...rest } = response[key]; // Extract 'id' and store the rest
@@ -75,7 +78,7 @@ deleteSong(songId: string) {
   this.playlistService.deleteSong(songId).subscribe({
     next: (response) => {
       console.log('after delete' +response);
-      this.songs=[]
+     
       this.getSongs();
     },
     error: (err) => {

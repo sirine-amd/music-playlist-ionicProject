@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="bg-img">
+
     <ion-list>
       <ion-item-sliding *ngFor="let song of songs; let i = index">
         <ion-item [routerLink]="['/songdetail', song.id]">
@@ -33,6 +33,5 @@
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
-  </div>
 </ion-content>
 

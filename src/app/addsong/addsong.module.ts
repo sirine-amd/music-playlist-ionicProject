@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,7 +14,8 @@ import { AddSongPage } from './addsong.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AddsongPageRoutingModule
+    AddsongPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [AddSongPage]
 })
