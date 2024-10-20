@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './tabs/tabs.page';
+import { TabsPageModule } from './tabs/tabs.module';
 
 const routes: Routes = [
   {
@@ -31,6 +33,34 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () =>
       import('./register/register.module').then((m) => m.RegisterPageModule),
+  },
+  {
+    path: 'tabs',
+    component: TabsPage,
+    children: [
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfilePageModule),
+      },
+      {
+        path: 'playlist',
+        loadChildren: () =>
+          import('./playlist/playlist.module').then(
+            (m) => m.PlaylistPageModule
+          ),
+      },
+      {
+        path: '',
+        redirectTo: 'profile',
+        pathMatch: 'full',
+      },
+    ],
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfilePageModule),
   },
 ];
 
