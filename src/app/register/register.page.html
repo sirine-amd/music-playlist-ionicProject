@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Top section with logo -->
+  <div class="top-section">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" offset="4">
+          <ion-img src="assets/app_logo.png"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- Form section with blue background -->
+  <div class="form-section">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input formControlName="fullName"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="registerForm.get('fullName')?.touched && registerForm.get('fullName')?.invalid"
+        class="error-message"
+      >
+        <p *ngIf="registerForm.get('fullName')?.errors?.['required']">
+          Full Name is required.
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+        class="error-message"
+      >
+        <p *ngIf="registerForm.get('email')?.errors?.['required']">
+          Email is required.
+        </p>
+        <p *ngIf="registerForm.get('email')?.errors?.['email']">
+          Please enter a valid email.
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+        class="error-message"
+      >
+        <p *ngIf="registerForm.get('password')?.errors?.['required']">
+          Password is required.
+        </p>
+        <p *ngIf="registerForm.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters.
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Age</ion-label>
+        <ion-input type="number" formControlName="age"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.invalid"
+        class="error-message"
+      >
+        <p *ngIf="registerForm.get('age')?.errors?.['required']">
+          Age is required.
+        </p>
+        <p *ngIf="registerForm.get('age')?.errors?.['min']">
+          Age must be at least 18.
+        </p>
+      </div>
+
+      <ion-button
+        expand="full"
+        type="submit"
+        [disabled]="registerForm.invalid"
+        class="register-button"
+        >Sign Up</ion-button
+      >
+
+      <ion-row>
+        <ion-col>
+          <ion-button fill="clear" (click)="navigateToLogin()">
+            Already have an account? Login
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>
