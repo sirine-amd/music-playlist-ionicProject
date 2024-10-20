@@ -8,26 +8,40 @@
   <div class="profile-container">
     <ion-item>
       <ion-label position="stacked">Full Name</ion-label>
-      <ion-input [(ngModel)]="userProfile.fullName" placeholder="Enter your full name"></ion-input>
+      <ion-input
+        [(ngModel)]="userProfile.fullName"
+        placeholder="Enter your full name"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Email</ion-label>
-      <ion-input [(ngModel)]="userProfile.email" type="email" placeholder="Enter your email"></ion-input>
+      <ion-input
+        [(ngModel)]="userProfile.email"
+        type="email"
+        placeholder="Enter your email"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Age</ion-label>
-      <ion-input [(ngModel)]="userProfile.age" type="number" placeholder="Enter your age"></ion-input>
+      <ion-input
+        [(ngModel)]="userProfile.age"
+        type="number"
+        placeholder="Enter your age"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Profile Photo</ion-label>
-      <img *ngIf="userProfile.photoUrl" [src]="userProfile.photoUrl" class="profile-photo"/>
-      <input type="file" (change)="onFileChange($event)" accept="image/*"/>
+      <img *ngIf="image" [src]="image" />
+
+      <ion-button expand="block" (click)="takePicture()">
+        Take A Picture
+      </ion-button>
     </ion-item>
 
-    <ion-button expand="full" (click)="updateProfile()">Update Profile</ion-button>
+    <ion-button expand="full" (click)="updateProfile()"
+      >Update Profile</ion-button
+    >
   </div>
 </ion-content>
-

@@ -42,7 +42,7 @@ export class UserProfileService {
 
     // Use your image upload endpoint here
     return this.http
-      .post(`${this.imageBaseUrl}/${userId}`, formData, {
+      .post(`${this.imageBaseUrl}/${userId}.json`, formData, {
         reportProgress: true,
         observe: 'events',
       })
