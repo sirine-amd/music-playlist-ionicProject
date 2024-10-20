@@ -1,0 +1,33 @@
+
+.bg-img {
+    padding: 1px;
+    height: 100%;
+    width: 100%;
+    //background-color: red;
+    background-image: url("../../assets/background.jpg");
+    //background-repeat: repeat-y;
+    background-size: cover;
+  }
+  ion-list{
+    background-color: transparent;
+  }
+  ion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  ion-label {
+    text-align: left;
+  }
+  
+  .song-details {
+    text-align: right;
+  }
+  
+ 
+  h3 {
+    color: purple;
+    font-weight: bold;
+  }
+  
